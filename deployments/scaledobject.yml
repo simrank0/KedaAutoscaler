@@ -1,0 +1,20 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kafka-consumer-scaler
+  namespace: <your_namespace> # update your namespace
+spec:
+  scaleTargetRef:
+    name: kafka-consumer
+  pollingInterval: 30  # Check every 30 seconds for new metrics
+  cooldownPeriod: 30
+  minReplicaCount: 0  # Allow scaling down to 0 pods
+  maxReplicaCount: 1 # Define your maximum consumer pod count
+  triggers:
+    - type: kafka
+      metadata:
+        bootstrapServers: kafka-service:9092
+        topic: <your_topic>  # Reference from application.properties
+        consumerGroup: <your_consumer_group>
+        lagThreshold: '10'
+        offsetResetPolicy: latest
