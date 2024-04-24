@@ -13,3 +13,5 @@ Refer to this article to learn more about this: [LINK](https://substackcdn.com/i
 3. Send messages (or you can write your own producer code)
    
    `kafka-console-producer --broker-list localhost:9092 --topic <topic-name>`
+
+![1](https://github.com/simrank0/KedaAutoscaler/assets/56548348/1257ce63-9106-44de-9ac2-3614cf1a79ae)
